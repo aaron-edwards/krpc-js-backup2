@@ -4,7 +4,7 @@ module.exports = {
   env: {
     browser: false,
     es6: true,
-    jest: true
+    jest: true,
   },
   extends: [
     "airbnb-typescript/base",
@@ -12,15 +12,16 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:import/typescript",
     "prettier",
+    "prettier/@typescript-eslint",
   ],
   globals: {
     Atomics: "readonly",
-    SharedArrayBuffer: "readonly"
+    SharedArrayBuffer: "readonly",
   },
   parserOptions: {
-    project: './tsconfig.json',
+    project: "./tsconfig.json",
     ecmaVersion: 2018,
-    sourceType: "module"
+    sourceType: "module",
   },
   rules: {
     "@typescript-eslint/indent": "off",
@@ -31,19 +32,16 @@ module.exports = {
         vars: "all",
         args: "after-used",
         ignoreRestSiblings: false,
-        argsIgnorePattern: "^_"
-      }
+        argsIgnorePattern: "^_",
+      },
     ],
-    "import/order": ["error", {
-      "groups": [
-        "builtin",
-        "external",
-        "parent",
-        ["sibling", "index"]
-      ],
-      "newlines-between": "always"
-    }],
-    "no-underscore-dangle": ["warn", {"allowAfterThis": true}]
-  }
+    "import/order": [
+      "error",
+      {
+        groups: ["builtin", "external", "parent", ["sibling", "index"]],
+        "newlines-between": "always",
+      },
+    ],
+    "no-underscore-dangle": ["warn", { allowAfterThis: true }],
+  },
 };
-

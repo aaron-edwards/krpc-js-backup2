@@ -1,3 +1,1 @@
-import { Response } from "./generated/proto/krpc";
-
-console.log(Response);
+export default (a: number, b: number) => a + b;
