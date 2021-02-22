@@ -2,7 +2,7 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
@@ -24,15 +24,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      - uses: borales/actions-yarn@v2.0.0
+      - uses: actions/setup-node@v2
         with:
-          cmd: install # will run `yarn install` command
-
-      - uses: borales/actions-yarn@v2.0.0
+          node-version: '14'
+      - uses: actions/cache@v2
         with:
-          cmd: test
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: build
+      - run: yarn install
+      - run: yarn test --verbose
+      - run: yarn build
