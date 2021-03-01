@@ -2,11 +2,9 @@ import { Socket } from "net";
 
 import { Reader } from "protobufjs/minimal";
 
-import { Response } from "../generated/proto/krpc";
-
 export default async function* socketIterator(
   socket: Socket
-): AsyncGenerator<Response, undefined, null> {
+): AsyncGenerator<Uint8Array> {
   let reader = Reader.create(Buffer.from([]));
   let length: number | undefined;
 
@@ -21,12 +19,12 @@ export default async function* socketIterator(
       if (length + reader.pos > reader.len) {
         break;
       } else {
-        const buffer = reader.buf.slice(reader.pos, reader.pos + length);
+        yield reader.buf.slice(reader.pos, reader.pos + length);
         reader.skip(length);
         length = undefined;
-        yield Response.decode(buffer);
       }
     }
   }
+
   return undefined;
 }
