@@ -7,7 +7,7 @@
   "author": "Aaron Edwards <edwards.aaronmark@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -b tsconfig.build.json",
     "test": "jest"
   },
   "dependencies": {
