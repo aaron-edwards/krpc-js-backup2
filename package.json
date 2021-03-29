@@ -7,13 +7,15 @@
   "author": "Aaron Edwards <edwards.aaronmark@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "prebuild": "rimraf ./dist",
     "build": "tsc -b tsconfig.build.json",
+    "build:watch": "tsc -b tsconfig.build.json -w",
     "test": "jest"
   },
   "dependencies": {
     "@types/node": "^14.14.10",
-    "typescript": "^4.1.2",
-    "protobufjs": "^6.10.2"
+    "protobufjs": "^6.10.2",
+    "typescript": "^4.1.2"
   },
   "devDependencies": {
     "@types/jest": "^26.0.19",
@@ -26,6 +28,7 @@
     "fast-check": "^2.10.0",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
     "ts-proto": "^1.39.0"

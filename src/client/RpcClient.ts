@@ -11,7 +11,7 @@ const toErrorString = ({ name, service, description }: proto.Error) =>
 
 type ConnectionOptions = {
   host: string;
-  rpcPort: number;
+  port: number;
   name: string;
 };
 
@@ -35,26 +35,20 @@ export default class RcpClient {
 
   connect(): Promise<proto.ConnectionResponse> {
     return new Promise<proto.ConnectionResponse>((resolve, reject) => {
-      this.socket.connect(
-        {
-          host: this.connectionOptions.host,
-          port: this.connectionOptions.rpcPort,
-        },
-        async () => {
-          const request = proto.ConnectionRequest.fromPartial({
-            type: proto.ConnectionRequest_Type.RPC,
-            clientName: this.connectionOptions.name,
-          });
-          this.write(proto.ConnectionRequest.encode(request).finish());
-          const { value } = await this.responseIterator.next();
-          const response = proto.ConnectionResponse.decode(value);
-          if (response.status === proto.ConnectionResponse_Status.OK) {
-            resolve(response);
-          } else {
-            reject(response);
-          }
+      this.socket.connect(this.connectionOptions, async () => {
+        const request = proto.ConnectionRequest.fromPartial({
+          type: proto.ConnectionRequest_Type.RPC,
+          clientName: this.connectionOptions.name,
+        });
+        this.write(proto.ConnectionRequest.encode(request).finish());
+        const { value } = await this.responseIterator.next();
+        const response = proto.ConnectionResponse.decode(value);
+        if (response.status === proto.ConnectionResponse_Status.OK) {
+          resolve(response);
+        } else {
+          reject(response);
         }
-      );
+      });
     });
   }
 
