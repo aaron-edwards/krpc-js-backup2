@@ -1,7 +1,6 @@
 /* eslint-disable */
-import * as Long from 'long';
-import { Writer, Reader } from 'protobufjs/minimal';
-
+import * as Long from "long";
+import { Writer, Reader } from "protobufjs/minimal";
 
 export interface ConnectionRequest {
   type: ConnectionRequest_Type;
@@ -186,8 +185,7 @@ const baseConnectionResponse: object = {
   message: "",
 };
 
-const baseRequest: object = {
-};
+const baseRequest: object = {};
 
 const baseProcedureCall: object = {
   service: "",
@@ -200,11 +198,9 @@ const baseArgument: object = {
   position: 0,
 };
 
-const baseResponse: object = {
-};
+const baseResponse: object = {};
 
-const baseProcedureResult: object = {
-};
+const baseProcedureResult: object = {};
 
 const baseError: object = {
   service: "",
@@ -213,15 +209,13 @@ const baseError: object = {
   stackTrace: "",
 };
 
-const baseStreamUpdate: object = {
-};
+const baseStreamUpdate: object = {};
 
 const baseStreamResult: object = {
   id: Long.UZERO,
 };
 
-const baseServices: object = {
-};
+const baseServices: object = {};
 
 const baseService: object = {
   name: "",
@@ -266,27 +260,21 @@ const baseType: object = {
   name: "",
 };
 
-const baseTuple: object = {
-};
+const baseTuple: object = {};
 
-const baseList: object = {
-};
+const baseList: object = {};
 
-const baseSet: object = {
-};
+const baseSet: object = {};
 
-const baseDictionary: object = {
-};
+const baseDictionary: object = {};
 
-const baseDictionaryEntry: object = {
-};
+const baseDictionaryEntry: object = {};
 
 const baseStream: object = {
   id: Long.UZERO,
 };
 
-const baseEvent: object = {
-};
+const baseEvent: object = {};
 
 const baseStatus: object = {
   version: "",
@@ -310,13 +298,11 @@ const baseStatus: object = {
   timePerStreamUpdate: 0,
 };
 
-const baseMultiplexedRequest: object = {
-};
+const baseMultiplexedRequest: object = {};
 
-const baseMultiplexedResponse: object = {
-};
+const baseMultiplexedResponse: object = {};
 
-export const protobufPackage = 'krpc.schema'
+export const protobufPackage = "krpc.schema";
 
 export enum ConnectionRequest_Type {
   RPC = 0,
@@ -324,7 +310,9 @@ export enum ConnectionRequest_Type {
   UNRECOGNIZED = -1,
 }
 
-export function connectionRequest_TypeFromJSON(object: any): ConnectionRequest_Type {
+export function connectionRequest_TypeFromJSON(
+  object: any
+): ConnectionRequest_Type {
   switch (object) {
     case 0:
     case "RPC":
@@ -339,7 +327,9 @@ export function connectionRequest_TypeFromJSON(object: any): ConnectionRequest_T
   }
 }
 
-export function connectionRequest_TypeToJSON(object: ConnectionRequest_Type): string {
+export function connectionRequest_TypeToJSON(
+  object: ConnectionRequest_Type
+): string {
   switch (object) {
     case ConnectionRequest_Type.RPC:
       return "RPC";
@@ -358,7 +348,9 @@ export enum ConnectionResponse_Status {
   UNRECOGNIZED = -1,
 }
 
-export function connectionResponse_StatusFromJSON(object: any): ConnectionResponse_Status {
+export function connectionResponse_StatusFromJSON(
+  object: any
+): ConnectionResponse_Status {
   switch (object) {
     case 0:
     case "OK":
@@ -379,7 +371,9 @@ export function connectionResponse_StatusFromJSON(object: any): ConnectionRespon
   }
 }
 
-export function connectionResponse_StatusToJSON(object: ConnectionResponse_Status): string {
+export function connectionResponse_StatusToJSON(
+  object: ConnectionResponse_Status
+): string {
   switch (object) {
     case ConnectionResponse_Status.OK:
       return "OK";
@@ -646,7 +640,10 @@ export const ConnectionRequest = {
     } else {
       message.clientName = "";
     }
-    if (object.clientIdentifier !== undefined && object.clientIdentifier !== null) {
+    if (
+      object.clientIdentifier !== undefined &&
+      object.clientIdentifier !== null
+    ) {
       message.clientIdentifier = bytesFromBase64(object.clientIdentifier);
     }
     return message;
@@ -663,7 +660,10 @@ export const ConnectionRequest = {
     } else {
       message.clientName = "";
     }
-    if (object.clientIdentifier !== undefined && object.clientIdentifier !== null) {
+    if (
+      object.clientIdentifier !== undefined &&
+      object.clientIdentifier !== null
+    ) {
       message.clientIdentifier = object.clientIdentifier;
     } else {
       message.clientIdentifier = new Uint8Array();
@@ -672,15 +672,24 @@ export const ConnectionRequest = {
   },
   toJSON(message: ConnectionRequest): unknown {
     const obj: any = {};
-    message.type !== undefined && (obj.type = connectionRequest_TypeToJSON(message.type));
+    message.type !== undefined &&
+      (obj.type = connectionRequest_TypeToJSON(message.type));
     message.clientName !== undefined && (obj.clientName = message.clientName);
-    message.clientIdentifier !== undefined && (obj.clientIdentifier = base64FromBytes(message.clientIdentifier !== undefined ? message.clientIdentifier : new Uint8Array()));
+    message.clientIdentifier !== undefined &&
+      (obj.clientIdentifier = base64FromBytes(
+        message.clientIdentifier !== undefined
+          ? message.clientIdentifier
+          : new Uint8Array()
+      ));
     return obj;
   },
 };
 
 export const ConnectionResponse = {
-  encode(message: ConnectionResponse, writer: Writer = Writer.create()): Writer {
+  encode(
+    message: ConnectionResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
     writer.uint32(8).int32(message.status);
     writer.uint32(18).string(message.message);
     writer.uint32(26).bytes(message.clientIdentifier);
@@ -721,7 +730,10 @@ export const ConnectionResponse = {
     } else {
       message.message = "";
     }
-    if (object.clientIdentifier !== undefined && object.clientIdentifier !== null) {
+    if (
+      object.clientIdentifier !== undefined &&
+      object.clientIdentifier !== null
+    ) {
       message.clientIdentifier = bytesFromBase64(object.clientIdentifier);
     }
     return message;
@@ -738,7 +750,10 @@ export const ConnectionResponse = {
     } else {
       message.message = "";
     }
-    if (object.clientIdentifier !== undefined && object.clientIdentifier !== null) {
+    if (
+      object.clientIdentifier !== undefined &&
+      object.clientIdentifier !== null
+    ) {
       message.clientIdentifier = object.clientIdentifier;
     } else {
       message.clientIdentifier = new Uint8Array();
@@ -747,9 +762,15 @@ export const ConnectionResponse = {
   },
   toJSON(message: ConnectionResponse): unknown {
     const obj: any = {};
-    message.status !== undefined && (obj.status = connectionResponse_StatusToJSON(message.status));
+    message.status !== undefined &&
+      (obj.status = connectionResponse_StatusToJSON(message.status));
     message.message !== undefined && (obj.message = message.message);
-    message.clientIdentifier !== undefined && (obj.clientIdentifier = base64FromBytes(message.clientIdentifier !== undefined ? message.clientIdentifier : new Uint8Array()));
+    message.clientIdentifier !== undefined &&
+      (obj.clientIdentifier = base64FromBytes(
+        message.clientIdentifier !== undefined
+          ? message.clientIdentifier
+          : new Uint8Array()
+      ));
     return obj;
   },
 };
@@ -802,7 +823,9 @@ export const Request = {
   toJSON(message: Request): unknown {
     const obj: any = {};
     if (message.calls) {
-      obj.calls = message.calls.map(e => e ? ProcedureCall.toJSON(e) : undefined);
+      obj.calls = message.calls.map((e) =>
+        e ? ProcedureCall.toJSON(e) : undefined
+      );
     } else {
       obj.calls = [];
     }
@@ -916,9 +939,12 @@ export const ProcedureCall = {
     message.service !== undefined && (obj.service = message.service);
     message.procedure !== undefined && (obj.procedure = message.procedure);
     message.serviceId !== undefined && (obj.serviceId = message.serviceId);
-    message.procedureId !== undefined && (obj.procedureId = message.procedureId);
+    message.procedureId !== undefined &&
+      (obj.procedureId = message.procedureId);
     if (message.arguments) {
-      obj.arguments = message.arguments.map(e => e ? Argument.toJSON(e) : undefined);
+      obj.arguments = message.arguments.map((e) =>
+        e ? Argument.toJSON(e) : undefined
+      );
     } else {
       obj.arguments = [];
     }
@@ -981,7 +1007,10 @@ export const Argument = {
   toJSON(message: Argument): unknown {
     const obj: any = {};
     message.position !== undefined && (obj.position = message.position);
-    message.value !== undefined && (obj.value = base64FromBytes(message.value !== undefined ? message.value : new Uint8Array()));
+    message.value !== undefined &&
+      (obj.value = base64FromBytes(
+        message.value !== undefined ? message.value : new Uint8Array()
+      ));
     return obj;
   },
 };
@@ -1049,9 +1078,12 @@ export const Response = {
   },
   toJSON(message: Response): unknown {
     const obj: any = {};
-    message.error !== undefined && (obj.error = message.error ? Error.toJSON(message.error) : undefined);
+    message.error !== undefined &&
+      (obj.error = message.error ? Error.toJSON(message.error) : undefined);
     if (message.results) {
-      obj.results = message.results.map(e => e ? ProcedureResult.toJSON(e) : undefined);
+      obj.results = message.results.map((e) =>
+        e ? ProcedureResult.toJSON(e) : undefined
+      );
     } else {
       obj.results = [];
     }
@@ -1115,8 +1147,12 @@ export const ProcedureResult = {
   },
   toJSON(message: ProcedureResult): unknown {
     const obj: any = {};
-    message.error !== undefined && (obj.error = message.error ? Error.toJSON(message.error) : undefined);
-    message.value !== undefined && (obj.value = base64FromBytes(message.value !== undefined ? message.value : new Uint8Array()));
+    message.error !== undefined &&
+      (obj.error = message.error ? Error.toJSON(message.error) : undefined);
+    message.value !== undefined &&
+      (obj.value = base64FromBytes(
+        message.value !== undefined ? message.value : new Uint8Array()
+      ));
     return obj;
   },
 };
@@ -1207,7 +1243,8 @@ export const Error = {
     const obj: any = {};
     message.service !== undefined && (obj.service = message.service);
     message.name !== undefined && (obj.name = message.name);
-    message.description !== undefined && (obj.description = message.description);
+    message.description !== undefined &&
+      (obj.description = message.description);
     message.stackTrace !== undefined && (obj.stackTrace = message.stackTrace);
     return obj;
   },
@@ -1261,7 +1298,9 @@ export const StreamUpdate = {
   toJSON(message: StreamUpdate): unknown {
     const obj: any = {};
     if (message.results) {
-      obj.results = message.results.map(e => e ? StreamResult.toJSON(e) : undefined);
+      obj.results = message.results.map((e) =>
+        e ? StreamResult.toJSON(e) : undefined
+      );
     } else {
       obj.results = [];
     }
@@ -1327,8 +1366,12 @@ export const StreamResult = {
   },
   toJSON(message: StreamResult): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = (message.id || Long.UZERO).toString());
-    message.result !== undefined && (obj.result = message.result ? ProcedureResult.toJSON(message.result) : undefined);
+    message.id !== undefined &&
+      (obj.id = (message.id || Long.UZERO).toString());
+    message.result !== undefined &&
+      (obj.result = message.result
+        ? ProcedureResult.toJSON(message.result)
+        : undefined);
     return obj;
   },
 };
@@ -1381,7 +1424,9 @@ export const Services = {
   toJSON(message: Services): unknown {
     const obj: any = {};
     if (message.services) {
-      obj.services = message.services.map(e => e ? Service.toJSON(e) : undefined);
+      obj.services = message.services.map((e) =>
+        e ? Service.toJSON(e) : undefined
+      );
     } else {
       obj.services = [];
     }
@@ -1428,7 +1473,9 @@ export const Service = {
           message.classes.push(Class.decode(reader, reader.uint32()));
           break;
         case 4:
-          message.enumerations.push(Enumeration.decode(reader, reader.uint32()));
+          message.enumerations.push(
+            Enumeration.decode(reader, reader.uint32())
+          );
           break;
         case 5:
           message.exceptions.push(Exception.decode(reader, reader.uint32()));
@@ -1523,26 +1570,35 @@ export const Service = {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
     if (message.procedures) {
-      obj.procedures = message.procedures.map(e => e ? Procedure.toJSON(e) : undefined);
+      obj.procedures = message.procedures.map((e) =>
+        e ? Procedure.toJSON(e) : undefined
+      );
     } else {
       obj.procedures = [];
     }
     if (message.classes) {
-      obj.classes = message.classes.map(e => e ? Class.toJSON(e) : undefined);
+      obj.classes = message.classes.map((e) =>
+        e ? Class.toJSON(e) : undefined
+      );
     } else {
       obj.classes = [];
     }
     if (message.enumerations) {
-      obj.enumerations = message.enumerations.map(e => e ? Enumeration.toJSON(e) : undefined);
+      obj.enumerations = message.enumerations.map((e) =>
+        e ? Enumeration.toJSON(e) : undefined
+      );
     } else {
       obj.enumerations = [];
     }
     if (message.exceptions) {
-      obj.exceptions = message.exceptions.map(e => e ? Exception.toJSON(e) : undefined);
+      obj.exceptions = message.exceptions.map((e) =>
+        e ? Exception.toJSON(e) : undefined
+      );
     } else {
       obj.exceptions = [];
     }
-    message.documentation !== undefined && (obj.documentation = message.documentation);
+    message.documentation !== undefined &&
+      (obj.documentation = message.documentation);
     return obj;
   },
 };
@@ -1625,7 +1681,10 @@ export const Procedure = {
     } else {
       message.returnType = undefined;
     }
-    if (object.returnIsNullable !== undefined && object.returnIsNullable !== null) {
+    if (
+      object.returnIsNullable !== undefined &&
+      object.returnIsNullable !== null
+    ) {
       message.returnIsNullable = Boolean(object.returnIsNullable);
     } else {
       message.returnIsNullable = false;
@@ -1661,7 +1720,10 @@ export const Procedure = {
     } else {
       message.returnType = undefined;
     }
-    if (object.returnIsNullable !== undefined && object.returnIsNullable !== null) {
+    if (
+      object.returnIsNullable !== undefined &&
+      object.returnIsNullable !== null
+    ) {
       message.returnIsNullable = object.returnIsNullable;
     } else {
       message.returnIsNullable = false;
@@ -1682,18 +1744,27 @@ export const Procedure = {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
     if (message.parameters) {
-      obj.parameters = message.parameters.map(e => e ? Parameter.toJSON(e) : undefined);
+      obj.parameters = message.parameters.map((e) =>
+        e ? Parameter.toJSON(e) : undefined
+      );
     } else {
       obj.parameters = [];
     }
-    message.returnType !== undefined && (obj.returnType = message.returnType ? Type.toJSON(message.returnType) : undefined);
-    message.returnIsNullable !== undefined && (obj.returnIsNullable = message.returnIsNullable);
+    message.returnType !== undefined &&
+      (obj.returnType = message.returnType
+        ? Type.toJSON(message.returnType)
+        : undefined);
+    message.returnIsNullable !== undefined &&
+      (obj.returnIsNullable = message.returnIsNullable);
     if (message.gameScenes) {
-      obj.gameScenes = message.gameScenes.map(e => procedure_GameSceneToJSON(e));
+      obj.gameScenes = message.gameScenes.map((e) =>
+        procedure_GameSceneToJSON(e)
+      );
     } else {
       obj.gameScenes = [];
     }
-    message.documentation !== undefined && (obj.documentation = message.documentation);
+    message.documentation !== undefined &&
+      (obj.documentation = message.documentation);
     return obj;
   },
 };
@@ -1769,8 +1840,14 @@ export const Parameter = {
   toJSON(message: Parameter): unknown {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
-    message.type !== undefined && (obj.type = message.type ? Type.toJSON(message.type) : undefined);
-    message.defaultValue !== undefined && (obj.defaultValue = base64FromBytes(message.defaultValue !== undefined ? message.defaultValue : new Uint8Array()));
+    message.type !== undefined &&
+      (obj.type = message.type ? Type.toJSON(message.type) : undefined);
+    message.defaultValue !== undefined &&
+      (obj.defaultValue = base64FromBytes(
+        message.defaultValue !== undefined
+          ? message.defaultValue
+          : new Uint8Array()
+      ));
     return obj;
   },
 };
@@ -1832,7 +1909,8 @@ export const Class = {
   toJSON(message: Class): unknown {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
-    message.documentation !== undefined && (obj.documentation = message.documentation);
+    message.documentation !== undefined &&
+      (obj.documentation = message.documentation);
     return obj;
   },
 };
@@ -1914,11 +1992,14 @@ export const Enumeration = {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
     if (message.values) {
-      obj.values = message.values.map(e => e ? EnumerationValue.toJSON(e) : undefined);
+      obj.values = message.values.map((e) =>
+        e ? EnumerationValue.toJSON(e) : undefined
+      );
     } else {
       obj.values = [];
     }
-    message.documentation !== undefined && (obj.documentation = message.documentation);
+    message.documentation !== undefined &&
+      (obj.documentation = message.documentation);
     return obj;
   },
 };
@@ -1995,7 +2076,8 @@ export const EnumerationValue = {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
     message.value !== undefined && (obj.value = message.value);
-    message.documentation !== undefined && (obj.documentation = message.documentation);
+    message.documentation !== undefined &&
+      (obj.documentation = message.documentation);
     return obj;
   },
 };
@@ -2057,7 +2139,8 @@ export const Exception = {
   toJSON(message: Exception): unknown {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
-    message.documentation !== undefined && (obj.documentation = message.documentation);
+    message.documentation !== undefined &&
+      (obj.documentation = message.documentation);
     return obj;
   },
 };
@@ -2151,11 +2234,12 @@ export const Type = {
   },
   toJSON(message: Type): unknown {
     const obj: any = {};
-    message.code !== undefined && (obj.code = type_TypeCodeToJSON(message.code));
+    message.code !== undefined &&
+      (obj.code = type_TypeCodeToJSON(message.code));
     message.service !== undefined && (obj.service = message.service);
     message.name !== undefined && (obj.name = message.name);
     if (message.types) {
-      obj.types = message.types.map(e => e ? Type.toJSON(e) : undefined);
+      obj.types = message.types.map((e) => (e ? Type.toJSON(e) : undefined));
     } else {
       obj.types = [];
     }
@@ -2211,7 +2295,9 @@ export const Tuple = {
   toJSON(message: Tuple): unknown {
     const obj: any = {};
     if (message.items) {
-      obj.items = message.items.map(e => base64FromBytes(e !== undefined ? e : new Uint8Array()));
+      obj.items = message.items.map((e) =>
+        base64FromBytes(e !== undefined ? e : new Uint8Array())
+      );
     } else {
       obj.items = [];
     }
@@ -2267,7 +2353,9 @@ export const List = {
   toJSON(message: List): unknown {
     const obj: any = {};
     if (message.items) {
-      obj.items = message.items.map(e => base64FromBytes(e !== undefined ? e : new Uint8Array()));
+      obj.items = message.items.map((e) =>
+        base64FromBytes(e !== undefined ? e : new Uint8Array())
+      );
     } else {
       obj.items = [];
     }
@@ -2323,7 +2411,9 @@ export const Set = {
   toJSON(message: Set): unknown {
     const obj: any = {};
     if (message.items) {
-      obj.items = message.items.map(e => base64FromBytes(e !== undefined ? e : new Uint8Array()));
+      obj.items = message.items.map((e) =>
+        base64FromBytes(e !== undefined ? e : new Uint8Array())
+      );
     } else {
       obj.items = [];
     }
@@ -2379,7 +2469,9 @@ export const Dictionary = {
   toJSON(message: Dictionary): unknown {
     const obj: any = {};
     if (message.entries) {
-      obj.entries = message.entries.map(e => e ? DictionaryEntry.toJSON(e) : undefined);
+      obj.entries = message.entries.map((e) =>
+        e ? DictionaryEntry.toJSON(e) : undefined
+      );
     } else {
       obj.entries = [];
     }
@@ -2439,8 +2531,14 @@ export const DictionaryEntry = {
   },
   toJSON(message: DictionaryEntry): unknown {
     const obj: any = {};
-    message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
-    message.value !== undefined && (obj.value = base64FromBytes(message.value !== undefined ? message.value : new Uint8Array()));
+    message.key !== undefined &&
+      (obj.key = base64FromBytes(
+        message.key !== undefined ? message.key : new Uint8Array()
+      ));
+    message.value !== undefined &&
+      (obj.value = base64FromBytes(
+        message.value !== undefined ? message.value : new Uint8Array()
+      ));
     return obj;
   },
 };
@@ -2487,7 +2585,8 @@ export const Stream = {
   },
   toJSON(message: Stream): unknown {
     const obj: any = {};
-    message.id !== undefined && (obj.id = (message.id || Long.UZERO).toString());
+    message.id !== undefined &&
+      (obj.id = (message.id || Long.UZERO).toString());
     return obj;
   },
 };
@@ -2536,7 +2635,8 @@ export const Event = {
   },
   toJSON(message: Event): unknown {
     const obj: any = {};
-    message.stream !== undefined && (obj.stream = message.stream ? Stream.toJSON(message.stream) : undefined);
+    message.stream !== undefined &&
+      (obj.stream = message.stream ? Stream.toJSON(message.stream) : undefined);
     return obj;
   },
 };
@@ -2657,7 +2757,10 @@ export const Status = {
     } else {
       message.bytesReadRate = 0;
     }
-    if (object.bytesWrittenRate !== undefined && object.bytesWrittenRate !== null) {
+    if (
+      object.bytesWrittenRate !== undefined &&
+      object.bytesWrittenRate !== null
+    ) {
       message.bytesWrittenRate = Number(object.bytesWrittenRate);
     } else {
       message.bytesWrittenRate = 0;
@@ -2672,17 +2775,26 @@ export const Status = {
     } else {
       message.rpcRate = 0;
     }
-    if (object.oneRpcPerUpdate !== undefined && object.oneRpcPerUpdate !== null) {
+    if (
+      object.oneRpcPerUpdate !== undefined &&
+      object.oneRpcPerUpdate !== null
+    ) {
       message.oneRpcPerUpdate = Boolean(object.oneRpcPerUpdate);
     } else {
       message.oneRpcPerUpdate = false;
     }
-    if (object.maxTimePerUpdate !== undefined && object.maxTimePerUpdate !== null) {
+    if (
+      object.maxTimePerUpdate !== undefined &&
+      object.maxTimePerUpdate !== null
+    ) {
       message.maxTimePerUpdate = Number(object.maxTimePerUpdate);
     } else {
       message.maxTimePerUpdate = 0;
     }
-    if (object.adaptiveRateControl !== undefined && object.adaptiveRateControl !== null) {
+    if (
+      object.adaptiveRateControl !== undefined &&
+      object.adaptiveRateControl !== null
+    ) {
       message.adaptiveRateControl = Boolean(object.adaptiveRateControl);
     } else {
       message.adaptiveRateControl = false;
@@ -2697,17 +2809,26 @@ export const Status = {
     } else {
       message.recvTimeout = 0;
     }
-    if (object.timePerRpcUpdate !== undefined && object.timePerRpcUpdate !== null) {
+    if (
+      object.timePerRpcUpdate !== undefined &&
+      object.timePerRpcUpdate !== null
+    ) {
       message.timePerRpcUpdate = Number(object.timePerRpcUpdate);
     } else {
       message.timePerRpcUpdate = 0;
     }
-    if (object.pollTimePerRpcUpdate !== undefined && object.pollTimePerRpcUpdate !== null) {
+    if (
+      object.pollTimePerRpcUpdate !== undefined &&
+      object.pollTimePerRpcUpdate !== null
+    ) {
       message.pollTimePerRpcUpdate = Number(object.pollTimePerRpcUpdate);
     } else {
       message.pollTimePerRpcUpdate = 0;
     }
-    if (object.execTimePerRpcUpdate !== undefined && object.execTimePerRpcUpdate !== null) {
+    if (
+      object.execTimePerRpcUpdate !== undefined &&
+      object.execTimePerRpcUpdate !== null
+    ) {
       message.execTimePerRpcUpdate = Number(object.execTimePerRpcUpdate);
     } else {
       message.execTimePerRpcUpdate = 0;
@@ -2717,7 +2838,10 @@ export const Status = {
     } else {
       message.streamRpcs = 0;
     }
-    if (object.streamRpcsExecuted !== undefined && object.streamRpcsExecuted !== null) {
+    if (
+      object.streamRpcsExecuted !== undefined &&
+      object.streamRpcsExecuted !== null
+    ) {
       message.streamRpcsExecuted = Long.fromString(object.streamRpcsExecuted);
     } else {
       message.streamRpcsExecuted = Long.UZERO;
@@ -2727,7 +2851,10 @@ export const Status = {
     } else {
       message.streamRpcRate = 0;
     }
-    if (object.timePerStreamUpdate !== undefined && object.timePerStreamUpdate !== null) {
+    if (
+      object.timePerStreamUpdate !== undefined &&
+      object.timePerStreamUpdate !== null
+    ) {
       message.timePerStreamUpdate = Number(object.timePerStreamUpdate);
     } else {
       message.timePerStreamUpdate = 0;
@@ -2756,7 +2883,10 @@ export const Status = {
     } else {
       message.bytesReadRate = 0;
     }
-    if (object.bytesWrittenRate !== undefined && object.bytesWrittenRate !== null) {
+    if (
+      object.bytesWrittenRate !== undefined &&
+      object.bytesWrittenRate !== null
+    ) {
       message.bytesWrittenRate = object.bytesWrittenRate;
     } else {
       message.bytesWrittenRate = 0;
@@ -2771,17 +2901,26 @@ export const Status = {
     } else {
       message.rpcRate = 0;
     }
-    if (object.oneRpcPerUpdate !== undefined && object.oneRpcPerUpdate !== null) {
+    if (
+      object.oneRpcPerUpdate !== undefined &&
+      object.oneRpcPerUpdate !== null
+    ) {
       message.oneRpcPerUpdate = object.oneRpcPerUpdate;
     } else {
       message.oneRpcPerUpdate = false;
     }
-    if (object.maxTimePerUpdate !== undefined && object.maxTimePerUpdate !== null) {
+    if (
+      object.maxTimePerUpdate !== undefined &&
+      object.maxTimePerUpdate !== null
+    ) {
       message.maxTimePerUpdate = object.maxTimePerUpdate;
     } else {
       message.maxTimePerUpdate = 0;
     }
-    if (object.adaptiveRateControl !== undefined && object.adaptiveRateControl !== null) {
+    if (
+      object.adaptiveRateControl !== undefined &&
+      object.adaptiveRateControl !== null
+    ) {
       message.adaptiveRateControl = object.adaptiveRateControl;
     } else {
       message.adaptiveRateControl = false;
@@ -2796,17 +2935,26 @@ export const Status = {
     } else {
       message.recvTimeout = 0;
     }
-    if (object.timePerRpcUpdate !== undefined && object.timePerRpcUpdate !== null) {
+    if (
+      object.timePerRpcUpdate !== undefined &&
+      object.timePerRpcUpdate !== null
+    ) {
       message.timePerRpcUpdate = object.timePerRpcUpdate;
     } else {
       message.timePerRpcUpdate = 0;
     }
-    if (object.pollTimePerRpcUpdate !== undefined && object.pollTimePerRpcUpdate !== null) {
+    if (
+      object.pollTimePerRpcUpdate !== undefined &&
+      object.pollTimePerRpcUpdate !== null
+    ) {
       message.pollTimePerRpcUpdate = object.pollTimePerRpcUpdate;
     } else {
       message.pollTimePerRpcUpdate = 0;
     }
-    if (object.execTimePerRpcUpdate !== undefined && object.execTimePerRpcUpdate !== null) {
+    if (
+      object.execTimePerRpcUpdate !== undefined &&
+      object.execTimePerRpcUpdate !== null
+    ) {
       message.execTimePerRpcUpdate = object.execTimePerRpcUpdate;
     } else {
       message.execTimePerRpcUpdate = 0;
@@ -2816,7 +2964,10 @@ export const Status = {
     } else {
       message.streamRpcs = 0;
     }
-    if (object.streamRpcsExecuted !== undefined && object.streamRpcsExecuted !== null) {
+    if (
+      object.streamRpcsExecuted !== undefined &&
+      object.streamRpcsExecuted !== null
+    ) {
       message.streamRpcsExecuted = object.streamRpcsExecuted as Long;
     } else {
       message.streamRpcsExecuted = Long.UZERO;
@@ -2826,7 +2977,10 @@ export const Status = {
     } else {
       message.streamRpcRate = 0;
     }
-    if (object.timePerStreamUpdate !== undefined && object.timePerStreamUpdate !== null) {
+    if (
+      object.timePerStreamUpdate !== undefined &&
+      object.timePerStreamUpdate !== null
+    ) {
       message.timePerStreamUpdate = object.timePerStreamUpdate;
     } else {
       message.timePerStreamUpdate = 0;
@@ -2836,32 +2990,59 @@ export const Status = {
   toJSON(message: Status): unknown {
     const obj: any = {};
     message.version !== undefined && (obj.version = message.version);
-    message.bytesRead !== undefined && (obj.bytesRead = (message.bytesRead || Long.UZERO).toString());
-    message.bytesWritten !== undefined && (obj.bytesWritten = (message.bytesWritten || Long.UZERO).toString());
-    message.bytesReadRate !== undefined && (obj.bytesReadRate = message.bytesReadRate);
-    message.bytesWrittenRate !== undefined && (obj.bytesWrittenRate = message.bytesWrittenRate);
-    message.rpcsExecuted !== undefined && (obj.rpcsExecuted = (message.rpcsExecuted || Long.UZERO).toString());
+    message.bytesRead !== undefined &&
+      (obj.bytesRead = (message.bytesRead || Long.UZERO).toString());
+    message.bytesWritten !== undefined &&
+      (obj.bytesWritten = (message.bytesWritten || Long.UZERO).toString());
+    message.bytesReadRate !== undefined &&
+      (obj.bytesReadRate = message.bytesReadRate);
+    message.bytesWrittenRate !== undefined &&
+      (obj.bytesWrittenRate = message.bytesWrittenRate);
+    message.rpcsExecuted !== undefined &&
+      (obj.rpcsExecuted = (message.rpcsExecuted || Long.UZERO).toString());
     message.rpcRate !== undefined && (obj.rpcRate = message.rpcRate);
-    message.oneRpcPerUpdate !== undefined && (obj.oneRpcPerUpdate = message.oneRpcPerUpdate);
-    message.maxTimePerUpdate !== undefined && (obj.maxTimePerUpdate = message.maxTimePerUpdate);
-    message.adaptiveRateControl !== undefined && (obj.adaptiveRateControl = message.adaptiveRateControl);
-    message.blockingRecv !== undefined && (obj.blockingRecv = message.blockingRecv);
-    message.recvTimeout !== undefined && (obj.recvTimeout = message.recvTimeout);
-    message.timePerRpcUpdate !== undefined && (obj.timePerRpcUpdate = message.timePerRpcUpdate);
-    message.pollTimePerRpcUpdate !== undefined && (obj.pollTimePerRpcUpdate = message.pollTimePerRpcUpdate);
-    message.execTimePerRpcUpdate !== undefined && (obj.execTimePerRpcUpdate = message.execTimePerRpcUpdate);
+    message.oneRpcPerUpdate !== undefined &&
+      (obj.oneRpcPerUpdate = message.oneRpcPerUpdate);
+    message.maxTimePerUpdate !== undefined &&
+      (obj.maxTimePerUpdate = message.maxTimePerUpdate);
+    message.adaptiveRateControl !== undefined &&
+      (obj.adaptiveRateControl = message.adaptiveRateControl);
+    message.blockingRecv !== undefined &&
+      (obj.blockingRecv = message.blockingRecv);
+    message.recvTimeout !== undefined &&
+      (obj.recvTimeout = message.recvTimeout);
+    message.timePerRpcUpdate !== undefined &&
+      (obj.timePerRpcUpdate = message.timePerRpcUpdate);
+    message.pollTimePerRpcUpdate !== undefined &&
+      (obj.pollTimePerRpcUpdate = message.pollTimePerRpcUpdate);
+    message.execTimePerRpcUpdate !== undefined &&
+      (obj.execTimePerRpcUpdate = message.execTimePerRpcUpdate);
     message.streamRpcs !== undefined && (obj.streamRpcs = message.streamRpcs);
-    message.streamRpcsExecuted !== undefined && (obj.streamRpcsExecuted = (message.streamRpcsExecuted || Long.UZERO).toString());
-    message.streamRpcRate !== undefined && (obj.streamRpcRate = message.streamRpcRate);
-    message.timePerStreamUpdate !== undefined && (obj.timePerStreamUpdate = message.timePerStreamUpdate);
+    message.streamRpcsExecuted !== undefined &&
+      (obj.streamRpcsExecuted = (
+        message.streamRpcsExecuted || Long.UZERO
+      ).toString());
+    message.streamRpcRate !== undefined &&
+      (obj.streamRpcRate = message.streamRpcRate);
+    message.timePerStreamUpdate !== undefined &&
+      (obj.timePerStreamUpdate = message.timePerStreamUpdate);
     return obj;
   },
 };
 
 export const MultiplexedRequest = {
-  encode(message: MultiplexedRequest, writer: Writer = Writer.create()): Writer {
-    if (message.connectionRequest !== undefined && message.connectionRequest !== undefined) {
-      ConnectionRequest.encode(message.connectionRequest, writer.uint32(10).fork()).ldelim();
+  encode(
+    message: MultiplexedRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (
+      message.connectionRequest !== undefined &&
+      message.connectionRequest !== undefined
+    ) {
+      ConnectionRequest.encode(
+        message.connectionRequest,
+        writer.uint32(10).fork()
+      ).ldelim();
     }
     if (message.request !== undefined && message.request !== undefined) {
       Request.encode(message.request, writer.uint32(18).fork()).ldelim();
@@ -2876,7 +3057,10 @@ export const MultiplexedRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.connectionRequest = ConnectionRequest.decode(reader, reader.uint32());
+          message.connectionRequest = ConnectionRequest.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         case 2:
           message.request = Request.decode(reader, reader.uint32());
@@ -2890,8 +3074,13 @@ export const MultiplexedRequest = {
   },
   fromJSON(object: any): MultiplexedRequest {
     const message = { ...baseMultiplexedRequest } as MultiplexedRequest;
-    if (object.connectionRequest !== undefined && object.connectionRequest !== null) {
-      message.connectionRequest = ConnectionRequest.fromJSON(object.connectionRequest);
+    if (
+      object.connectionRequest !== undefined &&
+      object.connectionRequest !== null
+    ) {
+      message.connectionRequest = ConnectionRequest.fromJSON(
+        object.connectionRequest
+      );
     } else {
       message.connectionRequest = undefined;
     }
@@ -2904,8 +3093,13 @@ export const MultiplexedRequest = {
   },
   fromPartial(object: DeepPartial<MultiplexedRequest>): MultiplexedRequest {
     const message = { ...baseMultiplexedRequest } as MultiplexedRequest;
-    if (object.connectionRequest !== undefined && object.connectionRequest !== null) {
-      message.connectionRequest = ConnectionRequest.fromPartial(object.connectionRequest);
+    if (
+      object.connectionRequest !== undefined &&
+      object.connectionRequest !== null
+    ) {
+      message.connectionRequest = ConnectionRequest.fromPartial(
+        object.connectionRequest
+      );
     } else {
       message.connectionRequest = undefined;
     }
@@ -2918,19 +3112,34 @@ export const MultiplexedRequest = {
   },
   toJSON(message: MultiplexedRequest): unknown {
     const obj: any = {};
-    message.connectionRequest !== undefined && (obj.connectionRequest = message.connectionRequest ? ConnectionRequest.toJSON(message.connectionRequest) : undefined);
-    message.request !== undefined && (obj.request = message.request ? Request.toJSON(message.request) : undefined);
+    message.connectionRequest !== undefined &&
+      (obj.connectionRequest = message.connectionRequest
+        ? ConnectionRequest.toJSON(message.connectionRequest)
+        : undefined);
+    message.request !== undefined &&
+      (obj.request = message.request
+        ? Request.toJSON(message.request)
+        : undefined);
     return obj;
   },
 };
 
 export const MultiplexedResponse = {
-  encode(message: MultiplexedResponse, writer: Writer = Writer.create()): Writer {
+  encode(
+    message: MultiplexedResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
     if (message.response !== undefined && message.response !== undefined) {
       Response.encode(message.response, writer.uint32(10).fork()).ldelim();
     }
-    if (message.streamUpdate !== undefined && message.streamUpdate !== undefined) {
-      StreamUpdate.encode(message.streamUpdate, writer.uint32(18).fork()).ldelim();
+    if (
+      message.streamUpdate !== undefined &&
+      message.streamUpdate !== undefined
+    ) {
+      StreamUpdate.encode(
+        message.streamUpdate,
+        writer.uint32(18).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -2984,8 +3193,14 @@ export const MultiplexedResponse = {
   },
   toJSON(message: MultiplexedResponse): unknown {
     const obj: any = {};
-    message.response !== undefined && (obj.response = message.response ? Response.toJSON(message.response) : undefined);
-    message.streamUpdate !== undefined && (obj.streamUpdate = message.streamUpdate ? StreamUpdate.toJSON(message.streamUpdate) : undefined);
+    message.response !== undefined &&
+      (obj.response = message.response
+        ? Response.toJSON(message.response)
+        : undefined);
+    message.streamUpdate !== undefined &&
+      (obj.streamUpdate = message.streamUpdate
+        ? StreamUpdate.toJSON(message.streamUpdate)
+        : undefined);
     return obj;
   },
 };
@@ -2995,15 +3210,19 @@ interface WindowBase64 {
   btoa(bin: string): string;
 }
 
-const windowBase64 = (globalThis as unknown as WindowBase64);
-const atob = windowBase64.atob || ((b64: string) => Buffer.from(b64, 'base64').toString('binary'));
-const btoa = windowBase64.btoa || ((bin: string) => Buffer.from(bin, 'binary').toString('base64'));
+const windowBase64 = (globalThis as unknown) as WindowBase64;
+const atob =
+  windowBase64.atob ||
+  ((b64: string) => Buffer.from(b64, "base64").toString("binary"));
+const btoa =
+  windowBase64.btoa ||
+  ((bin: string) => Buffer.from(bin, "binary").toString("base64"));
 
 function bytesFromBase64(b64: string): Uint8Array {
   const bin = atob(b64);
   const arr = new Uint8Array(bin.length);
   for (let i = 0; i < bin.length; ++i) {
-      arr[i] = bin.charCodeAt(i);
+    arr[i] = bin.charCodeAt(i);
   }
   return arr;
 }
@@ -3013,7 +3232,7 @@ function base64FromBytes(arr: Uint8Array): string {
   for (let i = 0; i < arr.byteLength; ++i) {
     bin.push(String.fromCharCode(arr[i]));
   }
-  return btoa(bin.join(''));
+  return btoa(bin.join(""));
 }
 type Builtin = Date | Function | Uint8Array | string | number | undefined;
 export type DeepPartial<T> = T extends Builtin

@@ -1,0 +1,84 @@
+{{#each imports}}
+import { {{this}} } from './{{this}}';
+{{/each}}
+{{#if importLong }}import { Long } from 'protobufjs';{{/if}}
+{{#if importProto }}import proto from '../proto';{{/if}}
+
+export namespace {{name}} {
+  {{#if documentation}}
+  /**
+  {{#each documentation}}
+  * {{{this}}}
+  {{/each}}
+  */
+  {{/if}}
+  export interface {{name}} {
+    {{#each statics}}
+    {{name}}: {
+    {{#each procedures}}
+    {{#if documentation}}
+    /**
+    {{#each documentation}}
+      * {{{this}}}
+    {{/each}}
+      */
+    {{/if}}
+    {{{funcName}}}({{#each params}}{{name}}{{#if default}}?{{/if}}: {{type}}{{#unless @last}}, {{/unless}}{{/each}}): {{{returnType}}}
+    {{/each}}
+    }
+    {{/each}}
+    {{#each procedures}}
+    {{#if documentation}}
+    /**
+    {{#each documentation}}
+      * {{{this}}}
+    {{/each}}
+      */
+    {{/if}}
+    
+    {{#if static}}// static {{/if}}{{{funcName}}}({{#each params}}{{name}}{{#if default}}?{{/if}}: {{{type}}}{{#unless @last}}, {{/unless}}{{/each}}): {{{returnType}}}
+    
+    {{/each}}
+  }
+
+  {{#each classes}}
+  {{#if documentation}}
+  /**
+  {{#each documentation}}
+    * {{{this}}}
+  {{/each}}
+    */
+  {{/if}}
+  export interface {{name}} {
+    readonly id: number;
+    constructor(id: number): {{name}}
+    
+    {{#each procedures}}
+    {{#if documentation}}
+    /**
+    {{#each documentation}}
+    * {{{this}}}
+    {{/each}}
+    */
+    {{/if}}
+
+    {{#if static}}// static {{/if}}{{{funcName}}}({{#each params}}{{name}}{{#if default}}?{{/if}}: {{{type}}}{{#unless @last}}, {{/unless}}{{/each}}): {{{returnType}}}
+    
+    {{/each}}
+  }
+  {{/each}}
+
+  {{#each enumerations}}
+  {{#if documentation}}
+  /**
+    {{#each documentation}}
+  * {{{this}}}
+    {{/each}}
+  */
+  {{/if}}
+  export type {{name}} =
+  {{#each values}}
+    | '{{name}}'
+  {{/each}}
+  {{/each}}
+}
