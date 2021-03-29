@@ -1,4 +1,4 @@
-import mapClass from "../create-class";
+import createClass from "../create-class";
 
 jest.mock("../create-doc.ts", () => jest.fn(({ name }) => [name]));
 jest.mock("../create-procedure.ts", () => jest.fn(({ name }) => name));
@@ -17,7 +17,7 @@ describe("map-class", () => {
   };
 
   it("should use the class name", () => {
-    expect(mapClass({ name: "ClassName" }, stubService)).toEqual(
+    expect(createClass({ name: "ClassName" }, stubService)).toEqual(
       expect.objectContaining({
         name: "ClassName",
       })
@@ -26,7 +26,7 @@ describe("map-class", () => {
 
   it("should generate documentation", () => {
     const clazz = { name: "ClassName" };
-    expect(mapClass(clazz, stubService)).toEqual(
+    expect(createClass(clazz, stubService)).toEqual(
       expect.objectContaining({
         documentation: ["ClassName"],
       })
@@ -35,7 +35,7 @@ describe("map-class", () => {
 
   it("should map the class procedures", () => {
     const clazz = { name: "ClassName" };
-    expect(mapClass(clazz, stubService)).toEqual(
+    expect(createClass(clazz, stubService)).toEqual(
       expect.objectContaining({
         procedures: ["ClassName_proc2"],
       })
@@ -45,7 +45,7 @@ describe("map-class", () => {
   it("should have empty string name if name is undefiend", () => {
     const clazz = {};
     const service = {};
-    expect(mapClass(clazz, service)).toEqual(
+    expect(createClass(clazz, service)).toEqual(
       expect.objectContaining({
         name: "",
       })
@@ -55,7 +55,7 @@ describe("map-class", () => {
   it("should return no procedures if servce procedures is undefined", () => {
     const clazz = { name: "ClassName" };
     const service = {};
-    expect(mapClass(clazz, service)).toEqual(
+    expect(createClass(clazz, service)).toEqual(
       expect.objectContaining({
         procedures: [],
       })
