@@ -43,7 +43,7 @@ const trimBlanks = (lines: string[]) => {
 const processBlock = (text: string) =>
   text.split("\n").map(replaceLinks).map(replaceSee);
 
-const createDoc = (context: Context) => {
+export default (context: Context) => {
   const doc = extractDoc(context.documentation || "");
   const text = [
     ...processBlock(extractSummary(doc)),
@@ -52,6 +52,3 @@ const createDoc = (context: Context) => {
   ];
   return trimBlanks(text);
 };
-
-export default createDoc;
-export type CreateDoc = typeof createDoc;

@@ -75,4 +75,3 @@ types[TypeCode.DICTIONARY] = (
   )} }`;
 
 export default createType;
-export type CreateType = typeof createType;
