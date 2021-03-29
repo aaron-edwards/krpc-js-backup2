@@ -42,7 +42,7 @@ export default (service: IService) => {
     values: e.values!.map(({ name }) => ({ name: name! })),
     documentation: createDoc(e),
   });
-  const classes = service.classes?.map((c) => createClass(c, service));
+  const classes = service.classes?.map((c) => createClass(c, service)) || [];
   const allTypes = [
     ...new Set(
       (

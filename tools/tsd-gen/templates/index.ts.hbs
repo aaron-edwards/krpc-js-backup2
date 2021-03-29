@@ -1,0 +1,13 @@
+{{#each services}}
+import { {{{name}}} } from './{{name}}';
+{{/each}}
+
+{{#each services}}
+export { {{{name}}} } from './{{name}}';
+{{/each}}
+
+export type Services = {
+{{#each services}}
+  {{name}}: {{name}}.{{name}};
+{{/each}}
+};

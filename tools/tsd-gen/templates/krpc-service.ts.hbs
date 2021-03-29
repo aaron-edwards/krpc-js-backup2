@@ -2,7 +2,7 @@
 import { {{this}} } from './{{this}}';
 {{/each}}
 {{#if importLong }}import { Long } from 'protobufjs';{{/if}}
-{{#if importProto }}import proto from '../proto';{{/if}}
+{{#if importProto }}import * as proto from '../proto/krpc';{{/if}}
 
 export namespace {{name}} {
   {{#if documentation}}
