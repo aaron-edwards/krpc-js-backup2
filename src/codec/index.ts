@@ -3,6 +3,7 @@ import { Type_TypeCode as TypeCodes } from "../generated/proto/krpc";
 
 import { decodePrimitive, encodePrimitive } from "./primitives";
 import * as collections from "./collections";
+import * as structures from "./structures";
 import { Encode, Decode, IType } from "./types";
 
 const encoders = {
@@ -16,8 +17,8 @@ const encoders = {
   [TypeCodes.STRING]: encodePrimitive("string"),
   [TypeCodes.BYTES]: encodePrimitive("bytes"),
 
-  // [TypeCodes.ENUMERATION]: structures.encodeEnum,
-  // [TypeCodes.CLASS]: structures.encodeClass,
+  [TypeCodes.ENUMERATION]: structures.encodeEnum,
+  [TypeCodes.CLASS]: structures.encodeClass,
 
   // [TypeCodes.EVENT]: structures.encodeKrpcType("Event"),
   // [TypeCodes.STREAM]: structures.encodeKrpcType("Stream"),
@@ -54,8 +55,8 @@ const decoders = {
   [TypeCodes.STRING]: decodePrimitive("string"),
   [TypeCodes.BYTES]: decodePrimitive("bytes"),
 
-  // [TypeCodes.ENUMERATION]: structures.decodeEnum,
-  // [TypeCodes.CLASS]: structures.decodeClass,
+  [TypeCodes.ENUMERATION]: structures.decodeEnum,
+  [TypeCodes.CLASS]: structures.decodeClass,
 
   // [TypeCodes.EVENT]: structures.decodeKrpcType("Event"),
   // [TypeCodes.STREAM]: structures.decodeKrpcType("Stream"),
